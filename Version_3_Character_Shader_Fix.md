@@ -2,6 +2,8 @@
 
 For fixing green reflections and broken outlines colors on 3.0+ characters. Please credit https://discord.gg/agmg if you use this code
 
+Add the corresponding sections to your ini:
+
 
 ```ini
 ; Variables -----------------------
