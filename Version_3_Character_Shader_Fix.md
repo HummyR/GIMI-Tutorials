@@ -95,3 +95,6 @@ $CharacterIB = 4
 ResourceRefExtraDiffuse = reference ps-t1
 ResourceRefExtraLightMap = reference ps-t2
 ```
+
+Credits to Discord users HummyR#8131, Modder4869#4818, and Takoyaki#0697.
+Also huge thanks to 3dmigoto developers.
