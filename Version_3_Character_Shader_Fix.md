@@ -1,6 +1,6 @@
 ## 3.0+ Character Shader Fix
 
-For fixing green reflections and broken outlines colors on 3.0+ characters. Please credit https://discord.gg/agmg
+For fixing green reflections and broken outlines colors on 3.0+ characters. Please credit https://discord.gg/agmg if you use this code
 
 Add these lines to the beginning of your Character.ini:
 
