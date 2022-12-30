@@ -35,7 +35,7 @@ and r\d\.\w+, r\d\.\w+, r\d\.\w+\n
 
 [ShaderRegexCharOutline]
 shader_model = ps_5_0
-run = CommandListNilouOutline
+run = CommandListOutline
 [ShaderRegexCharOutline.pattern]
 mov o0\.w, l\(0\)\n
 mov o1\.xyz, r0\.xyzx\n
@@ -57,7 +57,7 @@ drawindexed=auto
 $CharacterIB = 0
 endif
 
-[CommandListNilouOutline]
+[CommandListOutline]
 if $CharacterIB != 0
     if $CharacterIB == 1
         ps-t1 = copy ResourceRefHeadLightMap
