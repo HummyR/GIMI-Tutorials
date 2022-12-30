@@ -2,7 +2,6 @@
 
 For fixing green reflections and broken outlines colors on 3.0+ characters. Please credit https://discord.gg/agmg if you use this code
 
-Add these lines to the beginning of your Character.ini:
 
 ```ini
 ; Variables -----------------------
@@ -72,7 +71,6 @@ drawindexed=auto
 $CharacterIB = 0
 endif
 ```
-Next, add these lines to the corresponding [TextureOverride] section in your Character.ini for each object part in your mod:
 
 ```ini
 [TextureOverrideCharacterHead]
