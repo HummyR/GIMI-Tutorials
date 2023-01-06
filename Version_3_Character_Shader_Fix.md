@@ -73,7 +73,7 @@ drawindexed=auto
 $CharacterIB = 0
 endif
 ```
-Add the lines to the end of the corresponding [TextureOverride] section
+Add these lines to the end of the corresponding [TextureOverride] section
 ```ini
 [TextureOverrideCharacterHead]
 $CharacterIB = 1
