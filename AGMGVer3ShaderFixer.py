@@ -5,6 +5,7 @@ import sys
 # Script created by HummyR#8131, Modder4869#4818, and Takoyaki#0697.
 # Huge thanks to SilentNightSound#7430 for guiding us.
 # Please visit our AGMG discord server https://discord.gg/agmg if you have any questions regarding this.
+# Type "python agmgver3shaderfix.py" in your command console to use this script.
 
 def main():
     
