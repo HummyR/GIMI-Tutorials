@@ -137,7 +137,7 @@ endif
                             continue
                         if x == None: End = y.end() + TOIndex
                         if y == None: End = x.end() + TOIndex
-                        End = max(x, y)
+                        else: End = max(x, y)
 
                         Newcode = Newcode[:End] + '\n$CharacterIB = ' + str(i+1) + '\nResourceRef' + OPIterate + 'Diffuse = reference ps-t1' + '\nResourceRef' + OPIterate + 'LightMap = reference ps-t2'  + Newcode[End:]
                     ModifiedFiles.append(file_path)
