@@ -5,7 +5,6 @@ import sys
 # Script created by HummyR#8131, Modder4869#4818, and Takoyaki#0697.
 # Huge thanks to SilentNightSound#7430 for guiding us.
 # Please visit our AGMG discord server https://discord.gg/agmg if you have any questions regarding this.
-# Type "python agmgver3shaderfix.py" in your command console to use this script.
 
 def main():
     
@@ -136,9 +135,10 @@ endif
 
                         if x == None and y == None:
                             continue
-                        if x == None: End = y.end() + TOIndex
-                        if y == None: End = x.end() + TOIndex
-                        else: End = max(x, y)
+                        elif x == None: End = y.end() + TOIndex
+                        elif y == None: End = x.end() + TOIndex
+                        else:
+                            End = max(x, y)
 
                         Newcode = Newcode[:End] + '\n$CharacterIB = ' + str(i+1) + '\nResourceRef' + OPIterate + 'Diffuse = reference ps-t1' + '\nResourceRef' + OPIterate + 'LightMap = reference ps-t2'  + Newcode[End:]
                     ModifiedFiles.append(file_path)
