@@ -6,6 +6,8 @@ import sys
 # Huge thanks to SilentNightSound#7430 for guiding us.
 # Please visit our AGMG discord server https://discord.gg/agmg if you have any questions regarding this.
 
+#open command console and type "python agmg3shaderfix.py" to use
+
 def main():
     
     print("\nAnime Game 3.0+ Shader Fixer\n")
