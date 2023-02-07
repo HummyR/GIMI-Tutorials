@@ -43,10 +43,13 @@ global $CharacterIB
 post $CharacterIB = 0
 
 [ResourceRefHeadDiffuse]
+[ResourceRefHeadLightMap]
 [ResourceRefBodyDiffuse]
+[ResourceRefBodyLightMap]
 [ResourceRefDressDiffuse]
+[ResourceRefDressLightMap]
 [ResourceRefExtraDiffuse]
-
+[ResourceRefExtraLightMap]
 
 ; ShaderOverride ---------------------------
 
@@ -57,6 +60,14 @@ run = CommandListReflectionTexture
 discard_n\w+ r\d\.\w+\\n
 lt r\d\.\w+, l\(0\.010000\), r\d\.\w+\\n
 and r\d\.\w+, r\d\.\w+, r\d\.\w+\\n
+
+[ShaderRegexCharOutline]
+shader_model = ps_5_0
+run = CommandListOutline
+[ShaderRegexCharOutline.pattern]
+mov o0\.w, l\(0\)\\n
+mov o1\.xyz, r0\.xyzx\\n
+mov o1\.w, l\(0.223606795\)
 
 ; CommandList -------------------------
 
@@ -75,6 +86,20 @@ drawindexed=auto
 $CharacterIB = 0
 endif
 
+[CommandListOutline]
+if $CharacterIB != 0
+    if $CharacterIB == 1
+        ps-t1 = copy ResourceRefHeadLightMap
+    else if $CharacterIB == 2
+        ps-t1 = copy ResourceRefBodyLightMap
+    else if $CharacterIB == 3
+        ps-t1 = copy ResourceRefDressLightMap
+    else if $CharacterIB == 4
+        ps-t1 = copy ResourceRefExtraLightMap
+    endif
+drawindexed=auto
+$CharacterIB = 0
+endif
 """
              
 
@@ -118,7 +143,7 @@ endif
                         else:
                             End = max(x, y)
 
-                        Newcode = Newcode[:End] + '\n$CharacterIB = ' + str(i+1) + '\nResourceRef' + OPIterate + 'Diffuse = reference ps-t1' + Newcode[End:]
+                        Newcode = Newcode[:End] + '\n$CharacterIB = ' + str(i+1) + '\nResourceRef' + OPIterate + 'Diffuse = reference ps-t1' + '\nResourceRef' + OPIterate + 'LightMap = reference ps-t2'  + Newcode[End:]
                     ModifiedFiles.append(file_path)
                     DISABLED_files.append(DISABLED_file_path)
                         
