@@ -7,9 +7,11 @@ Add the corresponding sections to your ini:
 
 ```ini
 ; Variables -----------------------
+
 [Constants]
 global $CharacterIB
 ;0=none, 1=head, 2=body, 3=dress, 4=extra, etc.
+
 [Present]
 post $CharacterIB = 0
 [ResourceRefHeadDiffuse]
@@ -20,7 +22,9 @@ post $CharacterIB = 0
 [ResourceRefDressLightMap]
 [ResourceRefExtraDiffuse]
 [ResourceRefExtraLightMap]
+
 ; ShaderOverride ---------------------------
+
 [ShaderRegexCharReflection]
 shader_model = ps_5_0
 run = CommandListReflectionTexture
@@ -28,6 +32,7 @@ run = CommandListReflectionTexture
 discard_n\w+ r\d\.\w+\n
 lt r\d\.\w+, l\(0\.010000\), r\d\.\w+\n
 and r\d\.\w+, r\d\.\w+, r\d\.\w+\n
+
 [ShaderRegexCharOutline]
 shader_model = ps_5_0
 run = CommandListOutline
@@ -35,7 +40,9 @@ run = CommandListOutline
 mov o0\.w, l\(0\)\n
 mov o1\.xyz, r0\.xyzx\n
 mov o1\.w, l\(0.223606795\)
+
 ; CommandList -------------------------
+
 [CommandListReflectionTexture]
 if $CharacterIB != 0
     if $CharacterIB == 1
@@ -50,6 +57,7 @@ if $CharacterIB != 0
 drawindexed=auto
 $CharacterIB = 0
 endif
+
 [CommandListOutline]
 if $CharacterIB != 0
     if $CharacterIB == 1
@@ -71,14 +79,17 @@ Add these lines to the end of the corresponding [TextureOverride] section
 $CharacterIB = 1
 ResourceRefHeadDiffuse = reference ps-t1
 ResourceRefHeadLightMap = reference ps-t2
+
 [TextureOverrideCharacterBody]
 $CharacterIB = 2
 ResourceRefBodyDiffuse = reference ps-t1
 ResourceRefBodyLightMap = reference ps-t2
+
 [TextureOverrideCharacterDress]
 $CharacterIB = 3
 ResourceRefDressDiffuse = reference ps-t1
 ResourceRefDressLightMap = reference ps-t2
+
 [TextureOverrideCharacterExtra]
 $CharacterIB = 4
 ResourceRefExtraDiffuse = reference ps-t1
