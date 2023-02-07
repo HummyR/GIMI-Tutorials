@@ -43,13 +43,10 @@ global $CharacterIB
 post $CharacterIB = 0
 
 [ResourceRefHeadDiffuse]
-[ResourceRefHeadLightMap]
 [ResourceRefBodyDiffuse]
-[ResourceRefBodyLightMap]
 [ResourceRefDressDiffuse]
-[ResourceRefDressLightMap]
 [ResourceRefExtraDiffuse]
-[ResourceRefExtraLightMap]
+
 
 ; ShaderOverride ---------------------------
 
