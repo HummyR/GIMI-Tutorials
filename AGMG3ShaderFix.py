@@ -67,7 +67,7 @@ run = CommandListOutline
 [ShaderRegexCharOutline.pattern]
 mov o\d+\.\w+, l\(\d+\)\n
 mov o\d+\.\w+, r\d+\.\w+\n
-mov o\d+\.\w+, l\(\d+.\d+\)
+mov o\d+\.\w+, l\(\d+\.\d+\)
 
 ; OPTIONAL: shader hash for reflection. replace this incase regex does not work.
 [ShaderOverrideReflectionTexture]
