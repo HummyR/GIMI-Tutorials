@@ -41,6 +41,28 @@ mov o\d+\.\w+, l\(\d+\)\n
 mov o\d+\.\w+, r\d+\.\w+\n
 mov o\d+\.\w+, l\(\d+.\d+\)
 
+; OPTIONAL: shader hash for reflection. replace this incase regex does not work.
+[ShaderOverrideReflectionTexture]
+hash=26eb354bad491b6f
+allow_duplicate_hash=overrule
+run=CommandListReflectionTexture
+
+[ShaderOverrideReflectionTextureDress]
+hash=b04806463c319e15
+allow_duplicate_hash=overrule
+run=CommandListReflectionTexture
+
+[ShaderOverrideReflectionTextureBlink]
+hash=167cf8a1f4f9ed4f
+allow_duplicate_hash=overrule
+run=CommandListReflectionTexture
+
+; OPTIONAL: shader hash for outline. replace this incase regex does not work.
+[ShaderOverrideOutlineTexture]
+hash=f6eb050ef75da1b7
+allow_duplicate_hash=overrule
+run=CommandListOutline
+
 ; CommandList -------------------------
 
 [CommandListReflectionTexture]
@@ -96,34 +118,6 @@ $CharacterIB = 4
 ResourceRefExtraDiffuse = reference ps-t1
 ResourceRefExtraLightMap = reference ps-t2
 ```
-
-OPTIONAL shader overrides in case the shader regex above does not work.
-```ini
-; ShaderOverride ---------------------------
-
-; OPTIONAL: shader hash for reflection. replace this incase regex does not work.
-[ShaderOverrideReflectionTexture]
-hash=26eb354bad491b6f
-allow_duplicate_hash=overrule
-run=CommandListReflectionTexture
-
-[ShaderOverrideReflectionTextureDress]
-hash=b04806463c319e15
-allow_duplicate_hash=overrule
-run=CommandListReflectionTexture
-
-[ShaderOverrideReflectionTextureBlink]
-hash=167cf8a1f4f9ed4f
-allow_duplicate_hash=overrule
-run=CommandListReflectionTexture
-
-; OPTIONAL: shader hash for outline. replace this incase regex does not work.
-[ShaderOverrideOutlineTexture]
-hash=f6eb050ef75da1b7
-allow_duplicate_hash=overrule
-run=CommandListOutline
-```
-
 
 Credits to Discord users HummyR#8131, Modder4869#4818, and Takoyaki#0697.
 Also huge thanks to 3dmigoto developers.
