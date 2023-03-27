@@ -29,9 +29,15 @@ post $CharacterIB = 0
 shader_model = ps_5_0
 run = CommandListReflectionTexture
 [ShaderRegexCharReflection.pattern]
-discard_n\w+ r\d\.\w+\n
-lt r\d\.\w+, l\(0\.010000\), r\d\.\w+\n
-and r\d\.\w+, r\d\.\w+, r\d\.\w+\n
+add r0\.w, -r0\.w, l\(1\.000000\)\n
+max r0\.w, r0\.w, l\(0\.000100\)\n
+log r0\.w, r0\.w\n
+mul r0\.w, r0\.w, cb0\[81\]\.x\n
+exp r0\.w, r0\.w\n
+max r1\.xyz, cb0\[79\]\.xyzx, cb0\[80\]\.xyzx\n
+mul r1\.xyz, r0\.wwww, r1\.xyzx\n
+mad o0\.xyz, r1\.xyzx, cb0\[81\]\.yyyy, r0\.xyzx\n
+mov o0\.w, l\(1\.000000\)\n
 
 [ShaderRegexCharOutline]
 shader_model = ps_5_0
