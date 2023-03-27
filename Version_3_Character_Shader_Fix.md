@@ -29,9 +29,9 @@ post $CharacterIB = 0
 shader_model = ps_5_0
 run = CommandListReflectionTexture
 [ShaderRegexCharReflection.pattern]
-mul r\d\.\w+, r\d\.\w+,[^.]*\.\w+\n
-mad o\d\.\w+, r\d\.\w+, cb\d\[\d+\]\.\w+, r\d\.\w+\n
-mov o\d\.\w+, l\(1\.000000\)\n
+mul r\d+\.\w+, r\d+\.\w+,[^.]*\.\w+\n
+mad o\d+\.\w+, r\d+\.\w+, cb\d+\[\d+\]\.\w+, r\d+\.\w+\n
+mov o\d+\.\w+, l\(\d+\.\d+\)\n
 
 [ShaderRegexCharOutline]
 shader_model = ps_5_0
@@ -40,6 +40,28 @@ run = CommandListOutline
 mov o0\.w, l\(0\)\n
 mov o1\.xyz, r0\.xyzx\n
 mov o1\.w, l\(0.223606795\)
+
+; shader hash for reflection. replace this incase regex does not work.
+[ShaderOverrideReflectionTexture]
+hash=26eb354bad491b6f
+allow_duplicate_hash=overrule
+run=CommandListReflectionTexture
+
+[ShaderOverrideReflectionTextureDress]
+hash=b04806463c319e15
+allow_duplicate_hash=overrule
+run=CommandListReflectionTexture
+
+[ShaderOverrideReflectionTextureBlink]
+hash=167cf8a1f4f9ed4f
+allow_duplicate_hash=overrule
+run=CommandListReflectionTexture
+
+; shader hash for outline. replace this incase regex does not work.
+[ShaderOverrideOutlineTexture]
+hash=f6eb050ef75da1b7
+allow_duplicate_hash=overrule
+run=CommandListOutline
 
 ; CommandList -------------------------
 
