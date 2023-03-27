@@ -29,15 +29,15 @@ post $CharacterIB = 0
 shader_model = ps_5_0
 run = CommandListReflectionTexture
 [ShaderRegexCharReflection.pattern]
-add r0\.w, -r0\.w, l\(1\.000000\)\n
-max r0\.w, r0\.w, l\(0\.000100\)\n
-log r0\.w, r0\.w\n
-mul r0\.w, r0\.w, cb0\[81\]\.x\n
-exp r0\.w, r0\.w\n
-max r1\.xyz, cb0\[79\]\.xyzx, cb0\[80\]\.xyzx\n
-mul r1\.xyz, r0\.wwww, r1\.xyzx\n
-mad o0\.xyz, r1\.xyzx, cb0\[81\]\.yyyy, r0\.xyzx\n
-mov o0\.w, l\(1\.000000\)\n
+add r\d\.\w+, -r\d\.\w, l\(1\.000000\)\n
+max r\d\.\w+, r\d\.\w, l\(0\.000100\)\n
+log r\d\.\w+, r\d\.\w\n
+mul r\d\.\w+, r\d\.\w, cb\d\[\d+\]\.\w\n
+exp r\d\.\w+, r\d\.\w\n
+max r\d\.\w+, cb\d\[\d+\]\.\w+, cb\d\[\d+\]\.\w+\n
+mul r\d\.\w+, r\d\.\w+, r\d\.\w+\n
+mad o\d\.\w+, r\d\.\w+, cb\d\[\d+\]\.\w+, r\d\.\w+\n
+mov o\d\.\w+, l\(1\.000000\)\n
 
 [ShaderRegexCharOutline]
 shader_model = ps_5_0
