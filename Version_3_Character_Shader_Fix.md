@@ -37,9 +37,9 @@ mov o\d+\.\w+, l\(\d+\.\d+\)\n
 shader_model = ps_5_0
 run = CommandListOutline
 [ShaderRegexCharOutline.pattern]
-mov o0\.w, l\(0\)\n
-mov o1\.xyz, r0\.xyzx\n
-mov o1\.w, l\(0.223606795\)
+mov o\d+\.\w+, l\(\d+\)\n
+mov o\d+\.\w+, r\d+\.\w+\n
+mov o\d+\.\w+, l\(\d+.\d+\)
 
 ; CommandList -------------------------
 
