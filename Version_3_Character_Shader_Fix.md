@@ -41,7 +41,7 @@ mov o0\.w, l\(0\)\n
 mov o1\.xyz, r0\.xyzx\n
 mov o1\.w, l\(0.223606795\)
 
-; shader hash for reflection. replace this incase regex does not work.
+; OPTIONAL: shader hash for reflection. replace this incase regex does not work.
 [ShaderOverrideReflectionTexture]
 hash=26eb354bad491b6f
 allow_duplicate_hash=overrule
@@ -57,7 +57,7 @@ hash=167cf8a1f4f9ed4f
 allow_duplicate_hash=overrule
 run=CommandListReflectionTexture
 
-; shader hash for outline. replace this incase regex does not work.
+; OPTIONAL: shader hash for outline. replace this incase regex does not work.
 [ShaderOverrideOutlineTexture]
 hash=f6eb050ef75da1b7
 allow_duplicate_hash=overrule
