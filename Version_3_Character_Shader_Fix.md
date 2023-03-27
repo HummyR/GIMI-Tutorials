@@ -99,6 +99,8 @@ ResourceRefExtraLightMap = reference ps-t2
 
 OPTIONAL shader overrides in case the shader regex above does not work.
 ```ini
+; ShaderOverride ---------------------------
+
 ; OPTIONAL: shader hash for reflection. replace this incase regex does not work.
 [ShaderOverrideReflectionTexture]
 hash=26eb354bad491b6f
