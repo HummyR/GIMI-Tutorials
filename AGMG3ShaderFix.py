@@ -69,27 +69,7 @@ mov o\d+\.\w+, l\(\d+\)\n
 mov o\d+\.\w+, r\d+\.\w+\n
 mov o\d+\.\w+, l\(\d+\.\d+\)
 
-; OPTIONAL: shader hash for reflection. replace this incase regex does not work.
-[ShaderOverrideReflectionTexture]
-hash=26eb354bad491b6f
-allow_duplicate_hash=overrule
-run=CommandListReflectionTexture
-
-[ShaderOverrideReflectionTextureDress]
-hash=b04806463c319e15
-allow_duplicate_hash=overrule
-run=CommandListReflectionTexture
-
-[ShaderOverrideReflectionTextureBlink]
-hash=167cf8a1f4f9ed4f
-allow_duplicate_hash=overrule
-run=CommandListReflectionTexture
-
-; OPTIONAL: shader hash for outline. replace this incase regex does not work.
-[ShaderOverrideOutlineTexture]
-hash=f6eb050ef75da1b7
-allow_duplicate_hash=overrule
-run=CommandListOutline
+; OPTIONAL: If regex match breaks, use a [ShaderOverride] command matching shader hash for reflection then use "run = CommandListOutline" under the command
 
 ; CommandList -------------------------
 
