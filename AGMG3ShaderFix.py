@@ -30,7 +30,7 @@ def main():
         raw_input("\nThis will modify all .ini files in this folder and subdirectories. \nRename some with 'disabled' if you dont want that .ini edited. \nPress enter to continue\n")
     
   
-    Shadercode = """
+    Shadercode = r"""
 ; Generated shader fix for 3.0+ GIMI importer characters. Please contact the tool developers at https://discord.gg/agmg if you have any questions.
 
 ; Variables -----------------------
@@ -57,16 +57,16 @@ post $CharacterIB = 0
 shader_model = ps_5_0
 run = CommandListReflectionTexture
 [ShaderRegexCharReflection.pattern]
-mul r\d+\.\w+, r\d+\.\w+,[^.]*\.\w+\\n
-mad o\d+\.\w+, r\d+\.\w+, cb\d+\[\d+\]\.\w+, r\d+\.\w+\\n
-mov o\d+\.\w+, l\(\d+\.\d+\)\\n
+mul r\d+\.\w+, r\d+\.\w+,[^.]*\.\w+\n
+mad o\d+\.\w+, r\d+\.\w+, cb\d+\[\d+\]\.\w+, r\d+\.\w+\n
+mov o\d+\.\w+, l\(\d+\.\d+\)\n
 
 [ShaderRegexCharOutline]
 shader_model = ps_5_0
 run = CommandListOutline
 [ShaderRegexCharOutline.pattern]
-mov o\d+\.\w+, l\(\d+\)\\n
-mov o\d+\.\w+, r\d+\.\w+\\n
+mov o\d+\.\w+, l\(\d+\)\n
+mov o\d+\.\w+, r\d+\.\w+\n
 mov o\d+\.\w+, l\(\d+\.\d+\)
 
 ; OPTIONAL: shader hash for reflection. replace this incase regex does not work.
