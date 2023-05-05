@@ -42,26 +42,26 @@ mov o\d+\.\w+, r\d+\.\w+\n
 mov o\d+\.\w+, l\(\d+\.\d+\)
 
 ; OPTIONAL: shader hash for reflection. replace this incase regex does not work.
-[ShaderOverrideReflectionTexture]
-hash=26eb354bad491b6f
-allow_duplicate_hash=overrule
-run=CommandListReflectionTexture
+;[ShaderOverrideReflectionTexture]
+;hash=26eb354bad491b6f
+;allow_duplicate_hash=overrule
+;run=CommandListReflectionTexture
 
-[ShaderOverrideReflectionTextureDress]
-hash=b04806463c319e15
-allow_duplicate_hash=overrule
-run=CommandListReflectionTexture
+;[ShaderOverrideReflectionTextureDress]
+;hash=b04806463c319e15
+;allow_duplicate_hash=overrule
+;run=CommandListReflectionTexture
 
-[ShaderOverrideReflectionTextureBlink]
-hash=167cf8a1f4f9ed4f
-allow_duplicate_hash=overrule
-run=CommandListReflectionTexture
+;[ShaderOverrideReflectionTextureBlink]
+;hash=167cf8a1f4f9ed4f
+;allow_duplicate_hash=overrule
+;run=CommandListReflectionTexture
 
 ; OPTIONAL: shader hash for outline. replace this incase regex does not work.
-[ShaderOverrideOutlineTexture]
-hash=f6eb050ef75da1b7
-allow_duplicate_hash=overrule
-run=CommandListOutline
+;[ShaderOverrideOutlineTexture]
+;hash=f6eb050ef75da1b7
+;allow_duplicate_hash=overrule
+;run=CommandListOutline
 
 ; CommandList -------------------------
 
@@ -119,5 +119,14 @@ ResourceRefExtraDiffuse = reference ps-t1
 ResourceRefExtraLightMap = reference ps-t2
 ```
 
+If you use Scaramouche/Wanderer or any other character that has special object parts with shared IB hashes, please include their hash and set the $Character variable to the appropriate value for your mod ($CharacterIB = 0 if you did not want to modify that special object part).
+```ini
+[TextureOverrideWandererHatIB]
+hash = 99be9547
+$CharacterIB = 0
+[TextureOverrideWandererHat2IB]
+hash = 676cc015
+$CharacterIB = 0
+```
 Credits to Discord users HummyR#8131, Modder4869#4818, and Takoyaki#0697.
 Also huge thanks to 3dmigoto developers.
