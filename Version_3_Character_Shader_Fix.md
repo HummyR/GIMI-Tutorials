@@ -119,14 +119,16 @@ ResourceRefExtraDiffuse = reference ps-t1
 ResourceRefExtraLightMap = reference ps-t2
 ```
 
-If you use Scaramouche/Wanderer or any other character that has special object parts with shared IB hashes, please include their hash and set the $Character variable to the appropriate value for your mod ($CharacterIB = 0 if you did not want to modify that special object part).
+If you use Scaramouche/Wanderer or any other character that has special object parts with shared IB hashes, please include their hash and set the $CharacterIB variable to the appropriate value for your mod ($CharacterIB = 0 if you did not want to modify that special object part).
 ```ini
 [TextureOverrideWandererHatIB]
 hash = 99be9547
 $CharacterIB = 0
+; this is Wanderer's normal hat IB
 [TextureOverrideWandererHat2IB]
 hash = 676cc015
 $CharacterIB = 0
+; this is Wanderer's hat IB while flying
 ```
 Credits to Discord users HummyR#8131, Modder4869#4818, and Takoyaki#0697.
 Also huge thanks to 3dmigoto developers.
