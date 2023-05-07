@@ -6,7 +6,8 @@ import sys
 # Huge thanks to SilentNightSound#7430 for guiding us.
 # Please visit our AGMG discord server https://discord.gg/agmg if you have any questions regarding this.
 
-#open command console and type "python agmg3shaderfix.py" to use
+# open command console and type "python agmg3shaderfix.py" to use
+# use this script last after any transparency or merge_mods scripts
 
 def main():
     
