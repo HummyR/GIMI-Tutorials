@@ -132,20 +132,9 @@ endif
 
                         TOIndex = TO.end()
 
-                        NextCommand = Newcode.find('[', TOIndex)
- 
+                        End = Newcode.find('[', TOIndex)
 
-                        x = re.search('(?s:.*)^ps-t(?:.(?!^ps-t))+$', Newcode[TOIndex:NextCommand], re.MULTILINE)
-                        y = re.search('(?s:.*)^run(?:.(?!^run))+$', Newcode[TOIndex:NextCommand], re.MULTILINE)
-
-                        if x == None and y == None:
-                            continue
-                        elif x == None: End = y.end() + TOIndex
-                        elif y == None: End = x.end() + TOIndex
-                        else:
-                            End = max(x, y)
-
-                        Newcode = Newcode[:End] + '\n$CharacterIB = ' + str(i+1) + '\nResourceRef' + OPIterate + 'Diffuse = reference ps-t1' + '\nResourceRef' + OPIterate + 'LightMap = reference ps-t2'  + Newcode[End:]
+                        Newcode = Newcode[:End] + '$CharacterIB = ' + str(i+1) + '\nResourceRef' + OPIterate + 'Diffuse = reference ps-t1' + '\nResourceRef' + OPIterate + 'LightMap = reference ps-t2\n\n'  + Newcode[End:]
                     ModifiedFiles.append(file_path)
                     DISABLED_files.append(DISABLED_file_path)
                         
