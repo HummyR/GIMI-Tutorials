@@ -44,13 +44,13 @@ global $CharacterIB
 post $CharacterIB = 0
 
 [ResourceRefHeadDiffuse]
-[ResourceRefHeadLightMap]
+;[ResourceRefHeadLightMap]
 [ResourceRefBodyDiffuse]
-[ResourceRefBodyLightMap]
+;[ResourceRefBodyLightMap]
 [ResourceRefDressDiffuse]
-[ResourceRefDressLightMap]
+;[ResourceRefDressLightMap]
 [ResourceRefExtraDiffuse]
-[ResourceRefExtraLightMap]
+;[ResourceRefExtraLightMap]
 
 ; ShaderOverride ---------------------------
 
@@ -62,13 +62,14 @@ mul r\d+\.\w+, r\d+\.\w+,[^.]*\.\w+\n
 mad o\d+\.\w+, r\d+\.\w+, cb\d+\[\d+\]\.\w+, r\d+\.\w+\n
 mov o\d+\.\w+, l\(\d+\.\d+\)\n
 
-[ShaderRegexCharOutline]
-shader_model = ps_5_0
-run = CommandListOutline
-[ShaderRegexCharOutline.pattern]
-mov o\d+\.\w+, l\(\d+\)\n
-mov o\d+\.\w+, r\d+\.\w+\n
-mov o\d+\.\w+, l\(\d+\.\d+\)
+;[ShaderRegexCharOutline]
+;shader_model = ps_5_0
+;run = CommandListOutline
+;[ShaderRegexCharOutline.pattern]
+;mov o\d+\.\w+, l\(\d+\)\n
+;mov o\d+\.\w+, r\d+\.\w+\n
+;mov o\d+\.\w+, l\(\d+\.\d+\)
+;broken as of version 4.0
 
 ; OPTIONAL: If regex match breaks, use a [ShaderOverride] command matching shader hash for reflection then use "run = CommandListOutline" under the command
 
@@ -89,20 +90,20 @@ drawindexed=auto
 $CharacterIB = 0
 endif
 
-[CommandListOutline]
-if $CharacterIB != 0
-    if $CharacterIB == 1
-        ps-t1 = copy ResourceRefHeadLightMap
-    else if $CharacterIB == 2
-        ps-t1 = copy ResourceRefBodyLightMap
-    else if $CharacterIB == 3
-        ps-t1 = copy ResourceRefDressLightMap
-    else if $CharacterIB == 4
-        ps-t1 = copy ResourceRefExtraLightMap
-    endif
-drawindexed=auto
-$CharacterIB = 0
-endif
+;[CommandListOutline]
+;if $CharacterIB != 0
+;    if $CharacterIB == 1
+;        ps-t1 = copy ResourceRefHeadLightMap
+;    else if $CharacterIB == 2
+;        ps-t1 = copy ResourceRefBodyLightMap
+;    else if $CharacterIB == 3
+;        ps-t1 = copy ResourceRefDressLightMap
+;    else if $CharacterIB == 4
+;        ps-t1 = copy ResourceRefExtraLightMap
+;    endif
+;drawindexed=auto
+;$CharacterIB = 0
+;endif
 """
              
 
