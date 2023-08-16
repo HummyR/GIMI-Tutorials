@@ -1,6 +1,6 @@
 ## 3.0+ Character Shader Fix
 
-For fixing green reflections and broken outlines colors on 3.0+ characters. Please credit https://discord.gg/agmg if you use this code
+For fixing green reflections and broken outlines colors on 3.0+ characters. Please credit https://discord.gg/agmg if you use this code. Updated for 4.0
 
 Add the corresponding sections to your ini:
 
@@ -15,13 +15,13 @@ global $CharacterIB
 [Present]
 post $CharacterIB = 0
 [ResourceRefHeadDiffuse]
-[ResourceRefHeadLightMap]
+;[ResourceRefHeadLightMap]
 [ResourceRefBodyDiffuse]
-[ResourceRefBodyLightMap]
+;[ResourceRefBodyLightMap]
 [ResourceRefDressDiffuse]
-[ResourceRefDressLightMap]
+;[ResourceRefDressLightMap]
 [ResourceRefExtraDiffuse]
-[ResourceRefExtraLightMap]
+;[ResourceRefExtraLightMap]
 
 ; ShaderOverride ---------------------------
 
@@ -33,13 +33,14 @@ mul r\d+\.\w+, r\d+\.\w+,[^.]*\.\w+\n
 mad o\d+\.\w+, r\d+\.\w+, cb\d+\[\d+\]\.\w+, r\d+\.\w+\n
 mov o\d+\.\w+, l\(\d+\.\d+\)\n
 
-[ShaderRegexCharOutline]
-shader_model = ps_5_0
-run = CommandListOutline
-[ShaderRegexCharOutline.pattern]
-mov o\d+\.\w+, l\(\d+\)\n
-mov o\d+\.\w+, r\d+\.\w+\n
-mov o\d+\.\w+, l\(\d+\.\d+\)
+;[ShaderRegexCharOutline]
+;shader_model = ps_5_0
+;run = CommandListOutline
+;[ShaderRegexCharOutline.pattern]
+;mov o\d+\.\w+, l\(\d+\)\n
+;mov o\d+\.\w+, r\d+\.\w+\n
+;mov o\d+\.\w+, l\(\d+\.\d+\)
+;broken as of version 4.0
 
 ; OPTIONAL: shader hash for reflection. replace this incase regex does not work.
 ;[ShaderOverrideReflectionTexture]
@@ -80,20 +81,20 @@ drawindexed=auto
 $CharacterIB = 0
 endif
 
-[CommandListOutline]
-if $CharacterIB != 0
-    if $CharacterIB == 1
-        ps-t1 = copy ResourceRefHeadLightMap
-    else if $CharacterIB == 2
-        ps-t1 = copy ResourceRefBodyLightMap
-    else if $CharacterIB == 3
-        ps-t1 = copy ResourceRefDressLightMap
-    else if $CharacterIB == 4
-        ps-t1 = copy ResourceRefExtraLightMap
-    endif
-drawindexed=auto
-$CharacterIB = 0
-endif
+;[CommandListOutline]
+;if $CharacterIB != 0
+;    if $CharacterIB == 1
+;        ps-t1 = copy ResourceRefHeadLightMap
+;    else if $CharacterIB == 2
+;        ps-t1 = copy ResourceRefBodyLightMap
+;    else if $CharacterIB == 3
+;        ps-t1 = copy ResourceRefDressLightMap
+;    else if $CharacterIB == 4
+;        ps-t1 = copy ResourceRefExtraLightMap
+;    endif
+;drawindexed=auto
+;$CharacterIB = 0
+;endif
 ```
 
 Add these lines to the end of the corresponding [TextureOverride] section
@@ -101,22 +102,22 @@ Add these lines to the end of the corresponding [TextureOverride] section
 [TextureOverrideCharacterHead]
 $CharacterIB = 1
 ResourceRefHeadDiffuse = reference ps-t1
-ResourceRefHeadLightMap = reference ps-t2
+;ResourceRefHeadLightMap = reference ps-t2
 
 [TextureOverrideCharacterBody]
 $CharacterIB = 2
 ResourceRefBodyDiffuse = reference ps-t1
-ResourceRefBodyLightMap = reference ps-t2
+;ResourceRefBodyLightMap = reference ps-t2
 
 [TextureOverrideCharacterDress]
 $CharacterIB = 3
 ResourceRefDressDiffuse = reference ps-t1
-ResourceRefDressLightMap = reference ps-t2
+;ResourceRefDressLightMap = reference ps-t2
 
 [TextureOverrideCharacterExtra]
 $CharacterIB = 4
 ResourceRefExtraDiffuse = reference ps-t1
-ResourceRefExtraLightMap = reference ps-t2
+;ResourceRefExtraLightMap = reference ps-t2
 ```
 
 If you use Scaramouche/Wanderer or any other character that has special object parts with shared IB hashes, please include their hash and set the $CharacterIB variable to the appropriate value for your mod ($CharacterIB = 0 if you did not want to modify that special object part).
