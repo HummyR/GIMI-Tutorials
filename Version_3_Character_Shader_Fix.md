@@ -15,13 +15,13 @@ global $CharacterIB
 [Present]
 post $CharacterIB = 0
 [ResourceRefHeadDiffuse]
-;[ResourceRefHeadLightMap]
+[ResourceRefHeadLightMap]
 [ResourceRefBodyDiffuse]
-;[ResourceRefBodyLightMap]
+[ResourceRefBodyLightMap]
 [ResourceRefDressDiffuse]
-;[ResourceRefDressLightMap]
+[ResourceRefDressLightMap]
 [ResourceRefExtraDiffuse]
-;[ResourceRefExtraLightMap]
+[ResourceRefExtraLightMap]
 
 ; ShaderOverride ---------------------------
 
@@ -33,14 +33,33 @@ mul r\d+\.\w+, r\d+\.\w+,[^.]*\.\w+\n
 mad o\d+\.\w+, r\d+\.\w+, cb\d+\[\d+\]\.\w+, r\d+\.\w+\n
 mov o\d+\.\w+, l\(\d+\.\d+\)\n
 
-;[ShaderRegexCharOutline]
-;shader_model = ps_5_0
-;run = CommandListOutline
-;[ShaderRegexCharOutline.pattern]
-;mov o\d+\.\w+, l\(\d+\)\n
-;mov o\d+\.\w+, r\d+\.\w+\n
-;mov o\d+\.\w+, l\(\d+\.\d+\)
-;broken as of version 4.0
+[ShaderRegexCharOutline]
+shader_model = ps_5_0
+run = CommandListOutline
+[ShaderRegexCharOutline.pattern]
+ne r\d\.\w+, l\(-?\d*\.?\d+, -?\d*\.?\d+, -?\d*\.?\d+, -?\d*\.?\d+\), -?cb\d\[\d+\]\.\w+\n
+add r\d\.\w+, v\d\.\w+, l\(-?\d*\.?\d+\)\n
+lt r\d\.\w+, r\d\.\w+, l\(-?\d*\.?\d+\)\n
+and r\d\.\w+, r\d\.\w+, r\d\.\w+\n
+discard_nz r\d\.\w+\n
+ne r\d\.\w+, l\(-?\d*\.?\d+, -?\d*\.?\d+, -?\d*\.?\d+, -?\d*\.?\d+\), -?cb\d\[\d+\]\.\w+\n
+if_nz[\s\S]+^endif\n
+sample_indexable\(texture\dd\)\(float,float,float,float\) r\d\.\w+, v\d\.\w+, t\d\.\w+, s\d\n
+eq r\d\.\w+, -?cb\d\[\d+\]\.\w+, l\(-?\d*\.?\d+\)\n
+add r\d\.\w+, r\d\.\w+, -?cb\d\[\d+\]\.\w+\n
+lt r\d\.\w+, r\d\.\w+, l\(-?\d*\.?\d+\)\n
+and r\d\.\w+, r\d\.\w+, r\d\.\w+\n
+discard_nz r\d\.\w+\n
+(?:(?:ne r\d\.\w+, l\(-?\d*\.?\d+, -?\d*\.?\d+, -?\d*\.?\d+, -?\d*\.?\d+\), -?cb\d\[\d+\]\.\w+\n)+(?:or r\d\.\w+, r\d\.\w+, r\d\.\w+\n)*)+
+if_nz[\s\S]+^endif\n
+ne r\d\.\w+, l\(-?\d*\.?\d+, -?\d*\.?\d+, -?\d*\.?\d+, -?\d*\.?\d+\), -?cb\d\[\d+\]\.\w+\n
+mul r\d\.\w+, -?cb\d\[\d+\]\.\w+, l\(-?\d*\.?\d+\)\n
+movc o\d\.\w+, r\d\.\w+, r\d\.\w+, r\d\.\w+\n
+mad o\d\.\w+, v\d\.\w+, l\(-?\d*\.?\d+, -?\d*\.?\d+, -?\d*\.?\d+, -?\d*\.?\d+\), l\(-?\d*\.?\d+, -?\d*\.?\d+, -?\d*\.?\d+, -?\d*\.?\d+\)\n
+(?:mov o\d\.\w+, l\(-?\d*\.?\d+\)\n
+mov o\d\.\w+, r\d\.\w+\n)+
+(?:mov o\d\.\w+, -?cb\d\[\d+\]\.\w+\n
+mov o\d\.\w+, l\(-?\d*\.?\d+\)\n)+
 
 ; OPTIONAL: shader hash for reflection. replace this incase regex does not work.
 ;[ShaderOverrideReflectionTexture]
@@ -48,19 +67,9 @@ mov o\d+\.\w+, l\(\d+\.\d+\)\n
 ;allow_duplicate_hash=overrule
 ;run=CommandListReflectionTexture
 
-;[ShaderOverrideReflectionTextureDress]
-;hash=b04806463c319e15
-;allow_duplicate_hash=overrule
-;run=CommandListReflectionTexture
-
-;[ShaderOverrideReflectionTextureBlink]
-;hash=167cf8a1f4f9ed4f
-;allow_duplicate_hash=overrule
-;run=CommandListReflectionTexture
-
 ; OPTIONAL: shader hash for outline. replace this incase regex does not work.
 ;[ShaderOverrideOutlineTexture]
-;hash=f6eb050ef75da1b7
+;hash=c72470bbf959ff35
 ;allow_duplicate_hash=overrule
 ;run=CommandListOutline
 
@@ -81,20 +90,20 @@ drawindexed=auto
 $CharacterIB = 0
 endif
 
-;[CommandListOutline]
-;if $CharacterIB != 0
-;    if $CharacterIB == 1
-;        ps-t1 = copy ResourceRefHeadLightMap
-;    else if $CharacterIB == 2
-;        ps-t1 = copy ResourceRefBodyLightMap
-;    else if $CharacterIB == 3
-;        ps-t1 = copy ResourceRefDressLightMap
-;    else if $CharacterIB == 4
-;        ps-t1 = copy ResourceRefExtraLightMap
-;    endif
-;drawindexed=auto
-;$CharacterIB = 0
-;endif
+[CommandListOutline]
+if $CharacterIB != 0
+    if $CharacterIB == 1
+        ps-t1 = copy ResourceRefHeadLightMap
+    else if $CharacterIB == 2
+        ps-t1 = copy ResourceRefBodyLightMap
+    else if $CharacterIB == 3
+        ps-t1 = copy ResourceRefDressLightMap
+    else if $CharacterIB == 4
+        ps-t1 = copy ResourceRefExtraLightMap
+    endif
+drawindexed=auto
+$CharacterIB = 0
+endif
 ```
 
 Add these lines to the end of the corresponding [TextureOverride] section
