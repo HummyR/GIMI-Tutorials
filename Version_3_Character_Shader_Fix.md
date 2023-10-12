@@ -111,22 +111,22 @@ Add these lines to the end of the corresponding [TextureOverride] section
 [TextureOverrideCharacterHead]
 $CharacterIB = 1
 ResourceRefHeadDiffuse = reference ps-t1
-;ResourceRefHeadLightMap = reference ps-t2
+ResourceRefHeadLightMap = reference ps-t2
 
 [TextureOverrideCharacterBody]
 $CharacterIB = 2
 ResourceRefBodyDiffuse = reference ps-t1
-;ResourceRefBodyLightMap = reference ps-t2
+ResourceRefBodyLightMap = reference ps-t2
 
 [TextureOverrideCharacterDress]
 $CharacterIB = 3
 ResourceRefDressDiffuse = reference ps-t1
-;ResourceRefDressLightMap = reference ps-t2
+ResourceRefDressLightMap = reference ps-t2
 
 [TextureOverrideCharacterExtra]
 $CharacterIB = 4
 ResourceRefExtraDiffuse = reference ps-t1
-;ResourceRefExtraLightMap = reference ps-t2
+ResourceRefExtraLightMap = reference ps-t2
 ```
 
 If you use Scaramouche/Wanderer or any other character that has special object parts with shared IB hashes, please include their hash and set the $CharacterIB variable to the appropriate value for your mod ($CharacterIB = 0 if you did not want to modify that special object part).
